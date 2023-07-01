@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import Filter from "./Components/Filter/index";
 import { recipeList } from "./Data/data";
@@ -9,6 +10,7 @@ import AddIcon from "@mui/icons-material/Add";
 import ModalProvider from "./Components/ModalProvider";
 
 const Landing = () => {
+  const { dispatch } = useData();
   const { filterByList } = useData();
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const openAddModal = () => setIsAddModalOpen(true);
@@ -38,11 +40,20 @@ const Landing = () => {
     });
   };
 
-  console.log(modalData);
-
   const submitHandler = (event) => {
     event.preventDefault();
     closeAddModal();
+    dispatch({
+      type: "ADD_NEW",
+      payload: {
+        id: uuidv4(),
+        recipeName: modalData.dishName,
+        cuisine: modalData.dishType,
+        image: modalData.dishImage,
+        ingredients: modalData.dishIngredients.split(","),
+        instructions: modalData.dishInstructions.split("."),
+      },
+    });
   };
 
   return (
@@ -99,6 +110,7 @@ const Landing = () => {
                     name="dishIngredients"
                     value={modalData.dishIngredients}
                     onChange={handleModalData}
+                    placeholder="use comma(,) to separate"
                   />
                 </label>
                 <label className="flex flex-col gap-2 text-blue-950">
@@ -107,6 +119,7 @@ const Landing = () => {
                     name="dishInstructions"
                     value={modalData.dishInstructions}
                     onChange={handleModalData}
+                    placeholder="use comma(.) to separate"
                   />
                 </label>
                 <Button sx={{ background: "#fff" }} type="submit">

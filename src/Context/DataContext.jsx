@@ -25,6 +25,12 @@ const DataReducer = (state, action) => {
         }),
       };
     }
+    case "ADD_NEW": {
+      return {
+        ...state,
+        recipeArray: [...state.recipeArray, action.payload],
+      };
+    }
   }
 };
 
