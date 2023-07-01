@@ -17,7 +17,11 @@ const Detail = () => {
         <h3 className="text-center">{getDish?.recipeName}</h3>
         <div className="flex gap-5 flex-col">
           <div className="w-[300px] h-[200px] bg-[#ddd] border border-blue-950">
-            <img src={image} alt="img" className="w-full h-full object-cover" />
+            <img
+              src={getDish?.image}
+              alt="img"
+              className="w-full h-full object-cover"
+            />
           </div>
           <div className="flex flex-col gap-4">
             <p className="flex justify-between gap-2">
