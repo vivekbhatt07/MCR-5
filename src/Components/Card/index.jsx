@@ -4,14 +4,20 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import { useData } from "../../Context/DataContext";
 
 const Card = (props) => {
-  const { dishId } = useParams();
+  const { dispatch } = useData();
   const { id, recipeName, cuisine, image, ingredients, instructions } = props;
   return (
     <article className="relative flex flex-col gap-3 p-4 bg-blue-50 rounded-md text-blue-950">
       <div className="absolute right-0 flex gap-3">
-        <Button sx={{ background: "#000", opacity: "80%" }}>
+        <Button
+          sx={{ background: "#000", opacity: "80%" }}
+          onClick={() => {
+            dispatch({ type: "DELETE", payload: id });
+          }}
+        >
           <DeleteIcon />
         </Button>
         <Button sx={{ background: "#000", opacity: "80%" }}>

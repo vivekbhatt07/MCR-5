@@ -17,6 +17,14 @@ const DataReducer = (state, action) => {
     case "SET_TYPE": {
       return { ...state, searchType: action.payload };
     }
+    case "DELETE": {
+      return {
+        ...state,
+        recipeArray: state.recipeArray.filter((current) => {
+          return current.id !== action.payload;
+        }),
+      };
+    }
   }
 };
 
