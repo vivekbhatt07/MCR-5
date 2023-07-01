@@ -9,7 +9,7 @@ const ModalProvider = (props) => {
     <div>
       {modalBtnVariant}
       <Modal open={isOpen} onClose={closeModal}>
-        <div className="text-blue-950 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] bg-blue-50 p-4 flex flex-col gap-4 rounded">
+        <div className="text-blue-950 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] bg-blue-600 p-4 flex flex-col gap-4 rounded">
           <div className="flex justify-between items-center">
             <span className="font-medium">{modalTitle}</span>
             <Button

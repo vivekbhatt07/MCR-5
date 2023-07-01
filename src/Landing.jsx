@@ -14,6 +14,37 @@ const Landing = () => {
   const openAddModal = () => setIsAddModalOpen(true);
   const closeAddModal = () => setIsAddModalOpen(false);
 
+  const [modalData, setmodalData] = useState({
+    dishImage: "",
+    dishName: "",
+    dishType: "",
+    dishIngredients: "",
+    dishInstructions: "",
+    postImageName: "",
+  });
+
+  const handleModalData = (event) => {
+    const { name, type, files, value } = event.target;
+    setmodalData((prevAddModalData) => {
+      return {
+        ...prevAddModalData,
+        [name]:
+          type == "file" && files.length !== 0
+            ? URL.createObjectURL(files[0])
+            : value,
+        postImageName:
+          type == "file" && files.length !== 0 ? files[0].name : "",
+      };
+    });
+  };
+
+  console.log(modalData);
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    closeAddModal();
+  };
+
   return (
     <div className="bg-blue-950 min-h-screen text-blue-50 ">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-6">
@@ -31,12 +62,57 @@ const Landing = () => {
                 </Button>
               }
             >
-              <label>
-                <input />
-              </label>
-              <label>
-                <input />
-              </label>
+              <form className="flex flex-col gap-3" onSubmit={submitHandler}>
+                <label className="flex flex-col gap-2 text-blue-950">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    name="dishImage"
+                    onChange={(event) => {
+                      handleModalData(event);
+                    }}
+                  />
+                </label>
+
+                <label className="flex flex-col gap-2 text-blue-950">
+                  <span>NAME</span>
+                  <input
+                    name="dishName"
+                    value={modalData.dishName}
+                    onChange={handleModalData}
+                    className="text-blue-950"
+                    required
+                  />
+                </label>
+                <label className="flex flex-col gap-2 text-blue-950">
+                  <span>CUISINE</span>
+                  <input
+                    name="dishType"
+                    value={modalData.dishType}
+                    onChange={handleModalData}
+                    required
+                  />
+                </label>
+                <label className="flex flex-col gap-2 text-blue-950">
+                  <span>INGREDIENTS</span>
+                  <textarea
+                    name="dishIngredients"
+                    value={modalData.dishIngredients}
+                    onChange={handleModalData}
+                  />
+                </label>
+                <label className="flex flex-col gap-2 text-blue-950">
+                  <span>INSTRUCTIONS</span>
+                  <textarea
+                    name="dishInstructions"
+                    value={modalData.dishInstructions}
+                    onChange={handleModalData}
+                  />
+                </label>
+                <Button sx={{ background: "#fff" }} type="submit">
+                  ADD
+                </Button>
+              </form>
             </ModalProvider>
           </div>
           <div className="flex flex-wrap gap-4">
