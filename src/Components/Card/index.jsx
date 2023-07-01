@@ -20,7 +20,22 @@ const Card = (props) => {
         >
           <DeleteIcon />
         </Button>
-        <Button sx={{ background: "#000", opacity: "80%" }}>
+        <Button
+          sx={{ background: "#000", opacity: "80%" }}
+          onClick={() => {
+            props.openModal();
+            props.isEditHandler(true);
+            props.editDataHandle({
+              id,
+              dishName: recipeName,
+              dishType: cuisine,
+              dishImage: image,
+              dishIngredients: ingredients,
+              dishInstructions: instructions,
+              postImageName: "",
+            });
+          }}
+        >
           <EditIcon />
         </Button>
       </div>

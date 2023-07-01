@@ -31,6 +31,14 @@ const DataReducer = (state, action) => {
         recipeArray: [...state.recipeArray, action.payload],
       };
     }
+    case "EDIT": {
+      return {
+        ...state,
+        recipeArray: state.recipeArray.map((current) => {
+          return current.id == action.payload.id ? action.payload : current;
+        }),
+      };
+    }
   }
 };
 

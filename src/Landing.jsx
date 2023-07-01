@@ -15,6 +15,8 @@ const Landing = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const openAddModal = () => setIsAddModalOpen(true);
   const closeAddModal = () => setIsAddModalOpen(false);
+  const [isEdit, setIsEdit] = useState(false);
+  const [editData, setEditData] = useState({});
 
   const [modalData, setmodalData] = useState({
     dishImage: "",
@@ -24,6 +26,8 @@ const Landing = () => {
     dishInstructions: "",
     postImageName: "",
   });
+
+  // console.log(isEdit, editData, modalData);
 
   const handleModalData = (event) => {
     const { name, type, files, value } = event.target;
@@ -43,17 +47,24 @@ const Landing = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     closeAddModal();
-    dispatch({
-      type: "ADD_NEW",
-      payload: {
-        id: uuidv4(),
-        recipeName: modalData.dishName,
-        cuisine: modalData.dishType,
-        image: modalData.dishImage,
-        ingredients: modalData.dishIngredients.split(","),
-        instructions: modalData.dishInstructions.split("."),
-      },
-    });
+    if (isEdit) {
+      dispatch({
+        type: "EDIT",
+        payload: modalData,
+      });
+    } else {
+      dispatch({
+        type: "ADD_NEW",
+        payload: {
+          id: uuidv4(),
+          recipeName: modalData.dishName,
+          cuisine: modalData.dishType,
+          image: modalData.dishImage,
+          ingredients: modalData.dishIngredients.split(","),
+          instructions: modalData.dishInstructions.split("."),
+        },
+      });
+    }
   };
 
   return (
@@ -122,15 +133,30 @@ const Landing = () => {
                     placeholder="use comma(.) to separate"
                   />
                 </label>
-                <Button sx={{ background: "#fff" }} type="submit">
-                  ADD
-                </Button>
+                {isEdit ? (
+                  <Button sx={{ background: "#fff" }} type="submit">
+                    Edit
+                  </Button>
+                ) : (
+                  <Button sx={{ background: "#fff" }} type="submit">
+                    ADD
+                  </Button>
+                )}
               </form>
             </ModalProvider>
           </div>
           <div className="flex flex-wrap gap-4">
             {filterByList.map((currentRecipe) => {
-              return <Card {...currentRecipe} key={currentRecipe.id} />;
+              return (
+                <Card
+                  {...currentRecipe}
+                  key={currentRecipe.id}
+                  openModal={openAddModal}
+                  closeModal={closeAddModal}
+                  isEditHandler={setIsEdit}
+                  editDataHandle={setmodalData}
+                />
+              );
             })}
           </div>
         </div>
