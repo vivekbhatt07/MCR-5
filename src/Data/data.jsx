@@ -5,7 +5,8 @@ export const recipeList = [
     id: uuidv4(),
     recipeName: "Chicken Alfredo",
     cuisine: "Italian",
-    image: "https://example.com/chicken_alfredo.jpg",
+    image:
+      "https://iwashyoudry.com/wp-content/uploads/2022/08/Chicken-Alfredo-Low-Res-21-1100x1650.jpg",
     ingredients: [
       "chicken breast",
       "fettuccine pasta",
@@ -34,7 +35,8 @@ export const recipeList = [
     id: uuidv4(),
     recipeName: "Taco Salad",
     cuisine: "Mexican",
-    image: "https://example.com/taco_salad.jpg",
+    image:
+      "https://iwashyoudry.com/wp-content/uploads/2020/06/Simple-Taco-Salad-Recipe-4.jpg",
     ingredients: [
       "ground beef",
       "taco seasoning",
@@ -62,7 +64,8 @@ export const recipeList = [
     id: uuidv4(),
     recipeName: "Teriyaki Salmon",
     cuisine: "Japanese",
-    image: "https://example.com/teriyaki_salmon.jpg",
+    image:
+      "https://iwashyoudry.com/wp-content/uploads/2021/06/Teriyaki-Chicken-13-of-13-667x1000.jpg",
     ingredients: [
       "salmon fillets",
       "soy sauce",
@@ -97,7 +100,8 @@ export const recipeList = [
     id: uuidv4(),
     recipeName: "Caprese Salad",
     cuisine: "Italian",
-    image: "https://example.com/caprese_salad.jpg",
+    image:
+      "https://iwashyoudry.com/wp-content/uploads/2016/05/Avocado-Caprese-Pasta-Salad-5-copy-675x916.jpg",
     ingredients: [
       "tomatoes",
       "mozzarella cheese",
@@ -120,7 +124,8 @@ export const recipeList = [
     id: uuidv4(),
     recipeName: "Chicken Curry",
     cuisine: "Indian",
-    image: "https://example.com/chicken_curry.jpg",
+    image:
+      "https://iwashyoudry.com/wp-content/uploads/2014/12/Curry-Roasted-Chicken.jpg",
     ingredients: [
       "chicken pieces",
 
@@ -159,7 +164,8 @@ export const recipeList = [
     id: uuidv4(),
     recipeName: "Mediterranean Pasta",
     cuisine: "Mediterranean",
-    image: "https://example.com/mediterranean_pasta.jpg",
+    image:
+      "https://iwashyoudry.com/wp-content/uploads/2016/02/Pasta-Salad-Web-7-1100x1650.jpg",
     ingredients: [
       "penne pasta",
       "cherry tomatoes",

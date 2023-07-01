@@ -41,7 +41,7 @@ const Card = (props) => {
       </div>
 
       <div className="w-[300px] h-[200px] bg-[#ddd] border border-blue-950">
-        {/* <img src={image} alt={recipeName} /> */}
+        <img src={image} alt="img" className="w-full h-full object-cover" />
       </div>
       <h3 className="text-center text-2xl">{recipeName}</h3>
       <p className="flex justify-between gap-2">
