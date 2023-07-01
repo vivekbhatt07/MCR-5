@@ -50,7 +50,15 @@ const Landing = () => {
     if (isEdit) {
       dispatch({
         type: "EDIT",
-        payload: modalData,
+        // payload: modalData,
+        payload: {
+          id: modalData.id,
+          recipeName: modalData.dishName,
+          cuisine: modalData.dishType,
+          image: modalData.dishImage,
+          ingredients: modalData.dishIngredients,
+          instructions: modalData.dishInstructions,
+        },
       });
     } else {
       dispatch({
@@ -66,6 +74,7 @@ const Landing = () => {
       });
     }
   };
+  console.log(modalData);
 
   return (
     <div className="bg-blue-950 min-h-screen text-blue-50 ">
